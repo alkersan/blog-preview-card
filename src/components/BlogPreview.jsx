@@ -3,41 +3,39 @@ import styled from "styled-components";
 
 const BlogPreview = () => {
   return (
-    <Link href="#">
-      <Wrapper>
-        <Hero src="illustration-article.svg" alt="" />
-        <Content>
-          <Label>Learning</Label>
-          <Date>Published 21 Dec 2023</Date>
-          <Title>HTML & CSS foundations</Title>
-          <Description>
-            These languages are the backbone of every website, defining
-            structure, content, and presentation.
-          </Description>
-        </Content>
-        <Author>
-          <picture>
-            <img alt="" src="image-avatar.webp" width="32" height="32" />
-          </picture>
-          <p>Greg Hooper</p>
-        </Author>
-      </Wrapper>
-    </Link>
+    <Wrapper>
+      <Hero src="illustration-article.svg" alt="" />
+      <Content>
+        <Label>Learning</Label>
+        <Date>
+          Published <time dateTime="2023-12-21">21 Dec 2023</time>
+        </Date>
+        <Title>
+          <Link href="">HTML & CSS foundations</Link>
+        </Title>
+        <Description>
+          These languages are the backbone of every website, defining structure,
+          content, and presentation.
+        </Description>
+      </Content>
+      <Author>
+        <img
+          alt="Author photo"
+          src="image-avatar.webp"
+          width="32"
+          height="32"
+        />
+        <p>Greg Hooper</p>
+      </Author>
+    </Wrapper>
   );
 };
 
-const Link = styled.a`
-  text-decoration: none;
-  color: inherit;
-  -webkit-tap-highlight-color: transparent;
-`;
-
-const Wrapper = styled.article`
-  width: fit-content;
+const Wrapper = styled.div`
   max-width: 24rem;
+
   background-color: var(--color-white);
   border-radius: 20px;
-  overflow: clip;
   padding: 1.5rem;
   border: 1px solid var(--color-black);
 
@@ -45,32 +43,30 @@ const Wrapper = styled.article`
   flex-direction: column;
   gap: 24px;
 
-  // Fluid marin from 0 to 24px on screens below 375px
-  margin-inline: clamp(0rem, -7.5rem + 37.5vw, 1.5rem);
+  // Fluid marin from 16 to 24px on screens below 375px
+  margin-inline: clamp(1rem, -1.909rem + 14.545vi, 1.5rem);
 
   --shadow-offset: 8px;
   will-change: filter;
-  transition: filter 200ms;
+  transition: filter 250ms;
   filter: drop-shadow(
     var(--shadow-offset) var(--shadow-offset) 0 var(--color-black)
   );
 
-  ${Link}:hover &,
-  ${Link}:focus-visible & {
+  &:hover,
+  &:focus-within {
     --shadow-offset: 0;
-    transition: filter 100ms;
   }
 `;
 
 const Hero = styled.img`
-  display: block;
-  width: 100%;
   height: 200px;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 10px;
 `;
 
-const Content = styled.section`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -78,25 +74,37 @@ const Content = styled.section`
   color: var(--color-black);
 `;
 
-const Label = styled.div`
+const Label = styled.p`
   padding: 4px 12px;
   background-color: var(--color-yellow);
   border-radius: 4px;
   font: var(--font-body-fluid-sb);
 `;
 
-const Date = styled.div`
+const Date = styled.p`
   font: var(--font-body-fluid-s);
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   font: var(--font-heading-fluid);
   will-change: color;
   transition: color 150ms;
+`;
 
-  ${Link}:hover &,
-  ${Link}:focus-visible & {
+const Link = styled.a`
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover,
+  &:focus-visible {
     color: var(--color-yellow);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
   }
 `;
 
@@ -105,19 +113,11 @@ const Description = styled.p`
   color: var(--color-grey);
 `;
 
-const Author = styled.section`
+const Author = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   gap: 12px;
-
-  img {
-    display: block;
-  }
-
-  p {
-    font: var(--font-body-fixed-sb);
-  }
+  font: var(--font-body-fixed-sb);
 `;
 
 export default BlogPreview;

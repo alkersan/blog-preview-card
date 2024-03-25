@@ -15,12 +15,12 @@ const App = () => {
 };
 
 const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100%;
-  min-width: fit-content;
-  background-color: var(--color-yellow);
 
-  display: grid;
-  place-content: center;
+  background-color: var(--color-yellow);
 `;
 
 export default App;
