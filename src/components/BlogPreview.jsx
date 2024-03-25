@@ -52,11 +52,6 @@ const Wrapper = styled.div`
   filter: drop-shadow(
     var(--shadow-offset) var(--shadow-offset) 0 var(--color-black)
   );
-
-  &:hover,
-  &:focus-within {
-    --shadow-offset: 0;
-  }
 `;
 
 const Hero = styled.img`
@@ -101,10 +96,9 @@ const Link = styled.a`
     color: var(--color-yellow);
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+  ${Wrapper}:has(&:hover),
+  ${Wrapper}:has(&:focus-visible) {
+    --shadow-offset: 0;
   }
 `;
 
