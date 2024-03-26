@@ -82,14 +82,15 @@ const Date = styled.p`
 
 const Title = styled.h2`
   font: var(--font-heading-fluid);
-  will-change: color;
-  transition: color 150ms;
 `;
 
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  -webkit-tap-highlight-color: transparent;
+  will-change: color;
+  transition: color 150ms;
+
+  // To increase tappable area
   padding-block: 1rem;
 
   &:hover,
