@@ -90,6 +90,7 @@ const Link = styled.a`
   text-decoration: none;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
+  padding-block: 1rem;
 
   &:hover,
   &:focus-visible {
